@@ -17,6 +17,6 @@ class MYPROJECT_API AMyProjectGameModeBase : public AGameModeBase
 public:
 	
 	
-	FString InitNewPlayer(APlayerController * NewPlayerController, const FUniqueNetIdRepl & UniqueId, const FString & Options, const FString & Portal) override;
+	//FString InitNewPlayer(APlayerController * NewPlayerController, const FUniqueNetIdRepl & UniqueId, const FString & Options, const FString & Portal) override;
 
 };
