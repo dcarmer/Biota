@@ -14,7 +14,9 @@ class MYPROJECT_API AMyProjectGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 	
+public:
 	
 	
-	
+	FString InitNewPlayer(APlayerController * NewPlayerController, const FUniqueNetIdRepl & UniqueId, const FString & Options, const FString & Portal) override;
+
 };
