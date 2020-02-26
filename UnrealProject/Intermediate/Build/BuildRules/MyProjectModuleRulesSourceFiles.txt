@@ -1,0 +1,3 @@
+C:\Users\Dakota Carmer\Desktop\Github Repositories\Biota\Biota\Source\MyProject\MyProject.Build.cs
+C:\Users\Dakota Carmer\Desktop\Github Repositories\Biota\Biota\Source\MyProject.Target.cs
+C:\Users\Dakota Carmer\Desktop\Github Repositories\Biota\Biota\Source\MyProjectEditor.Target.cs

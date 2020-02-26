@@ -1,0 +1,100 @@
+
+Basic Statistics 
+	Each biota has some basic numbers that track its current conditions.
+
+1. Base Points: This is the number of points that are necessary to sustain the Biota.  This is the summation of things like the number of limbs, the 
+presence of a shell, the number of eyes, and other traits.  The base point value is converted to latent nutrients upon the death of the individual.
+Likewise, the base points puts constraints on how complex an individual can get from one generation to the next, and how many reserve points must be 
+accommulated in order to reproduce.
+
+****LATER***	Base points are further broken down into Pre-Biotic Compounds, Poly-Organo-Goo, Carbon, and Proteins.  These percentages are determined by the encoding 
+string for the haplogroup strain.
+
+2. Subsistance Points: This is the number of nutrient points that the individual must acquire each turn to continue to live.  These points can be 
+drawn from 3 different sources: A) Environment, B) Community, C) or Reserves.  For more on these sources refer to the section on feeding.
+
+3. Reserve Points: This is the number of points that the biota must collect beyond basic subsistance in order to reproduce, survive famine, heal, etc.  
+This is, in many ways, a basic indicator of health of the individual.
+
+
+Stage: Attack/Defense
+
+Some Biota may attack others, and some biota may have defenses against those attacks.  Attacks can be simply for the purposes of removing competing 
+haplogroup members, or for the purposes of hunting/feeding.  If the Biota is incapable of attacking, it can be ignored in this stage.
+
+	Evaluate the surrounding cells in the order of preference (a sequence of 6 or 17 characters representing which adjacent cells will be considered 
+	for attacks.
+	- If the biota attacked a cell last tick, it will continue to do so this cycle.  
+	- If the considered cell is occupied by a member of the biota's own haplogroup, then skip this cell and immediately consider the next available cell
+	- If the considered cell is empty, skip this cell and immediately consider the next available cell
+	- If the considered cell is occupied by a member of a competing haplogroup, the biota will likely attack (need an attribute for likelihood)
+		- If the biota attacks, it may or may not be successful.  The success depends on the type of attack and any applicable defense for the
+		victim.  For simplicity we will consider only a few dimensions.
+			- Attacks can be of the following type (dependent on limb type for attacker):
+				Blunt: General feet and arms can deliver this type of attack and all exteriors are vulnerable to this type of attack.  
+					Attack damage will be random within a range (attribute needed).  This damage will be subtracted from the 
+					exterior strength of the victim (shells, fur, skin, etc., have different strengths).  
+				Stab: Only specific limb types can stab.  Stabs are ineffective against some exterior types (shells) and less effective 
+					against others (fur).  Again, attack damage is done to the victim.
+
+	A biota under attack may deploy defenses as follows
+	- If the biota has limbs, the limb closest to the attack may perform a defensive action, unless that limb has already attacked or already defended or 1/2 of 
+		the limbs of the defender have already attacked or defended.
+	- Defensive actions include the following:
+		- Blocking: This is dependent on a limb on the appropriate side of the biota and the biota having sight.  A successful block negates 90% of the damage
+		- Grab: This is dependent on a limb of the appropriate type on the appropriate side of the biota.  A successful grab reduces damage by 50% and inflicts
+			10% of the attack damage on the attacker.  This also prevents the attacker from subsequent attacks while the attacking limb is held, while the 
+			attackers also continues to take damage each turn.
+		- Sever: This is dependent on a limb of the appropriate type on the appropriate side of the biota.  A successful sever accepts full damage from the attack,
+			but inflicts the same amount on the attacker and amputates the limb of the attacker (delaying or elminating any further attacks)
+
+	Additional Passive Defensive capabilities include:
+	- Spike: Damage is inflicted on the attacker, even for some unsuccessful attacks
+	- Infect: 10% damage is inflicted on the attacker for the next 1-10 turns due to an acquired infection.
+
+	Any biota that dies seeds the now "empty" cell with nutrients.  The points worth of nutrients will be equal to the reserves plus the base number of the biota.
+				
+
+Stage: Feed
+
+All Biota will need to consume resources, even at a minimal "maintenance" level when they have no place to grow into, 
+so this will apply to all Biota each round.
+
+	Evaluate the home cell - 
+	1.	A universal unit of nutrient is provided to the Biota for each adjacent cell that is occupied by a living member of the same haplogroup.
+                This is akin to an algea mat or fungal growth wherein the units combine into a community that works to sustain the whole as much as 
+		the individuals.  This makes the continguous growth of the haplogroup an advantageous thing, as it provides internal support to each of
+		the members of the cluster
+	2.	All cells in the feeding radii of the biota are candidates for gathering nutrients.  Any available compatible nutrient units are consumed 
+		from the reach-able cells in the an order of precedence: dictated by their feeding sequence attribute, which is defined as a string of digits
+		from 0 to 6 in any order.  By default, the initial Biota will use a sequence with only 1 digit of 0 (see diagram).  Each subsequent 
+		generation may randomly mutate this order of consumption, but it will always be a string of digits that is as long as needed as defined 
+		by the feeding radii of the biota (dictated by limbs and other attributes).  Initially, since the first generation biota will always 
+		begin with a radii of 0, the string is only 1 digit long, representative of the home cell.  With a feeding reach/radii of 1, the string
+		must be 7 digits long; 1 digit for the home cell, and 6 digits for the surrounding cells.  At a reach of 2, the string will therefore 
+		be 18 characters long.  There are no plans to support a reach of more than 2, and even a 2 should be rare.
+		- There is no restriction on duplicate digits.  A feeding sequence can repeat as many of the digits as possible...even to the point
+		that it could all be one digit: 000000
+		- The mutations could result in a preference within a community for feeding in one direction...we'll see.
+		- Only 1 cell per term per limb may be fed from
+		- Biota may have, 0, 3, or 6 limbs.  Those limbs may or may not be feeding aparatus.  Those that are classified as feeding members can
+		be thought of as Labellum (sponging) or Stylet (piercing/predatory).  Other limb types may be legs (for motion or defense/pushing) 
+		or arms (defense/pushing, offense/pulling)
+
+
+Stage: Reproduction
+
+All Biota will be evaluated to see if they can reproduce this round.  In order to reproduce, they need the following conditions to be met:
+1. They must have enough reserve points in order to undergo mitosis (asexual reproduction/cell division)
+2. They must have 1 adjacent cell that is vacant where their offspring can be placed
+3. They must have not reproduced in the last X ticks/turns as this minimum number of ticks must have elapsed before a cell division can occur again
+4. They must not be currently infected
+
+If these conditions are met, the offspring will be placed in an available adjacent cell according to preference sequence of the surrounding cells.
+
+Each new offspring has a small change of expressing a mutation.  Multiple mutations could occur but the chances should be small for the original mutation, and therefore any additional mutations
+in the same individual would be even more unlikely.
+
+ 
+
+			
