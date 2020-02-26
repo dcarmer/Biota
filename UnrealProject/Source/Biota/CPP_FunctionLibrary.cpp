@@ -71,7 +71,7 @@ TArray<FString> UCPP_FunctionLibrary::GetAudioQualities()
 	{
 		TArray<FString> temp;
 		str.ParseIntoArray(temp, TEXT(","));
-		str = temp[temp.Num() - 2].Trim().Replace(TEXT(")"), TEXT("")).Replace(TEXT("\""), TEXT(""));
+		str = temp[temp.Num() - 2].TrimStart().Replace(TEXT(")"), TEXT("")).Replace(TEXT("\""), TEXT(""));
 	}
 	return Qualities;
 }
