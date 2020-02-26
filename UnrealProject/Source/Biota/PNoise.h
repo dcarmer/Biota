@@ -10,7 +10,7 @@
  * 
  */
 UCLASS(Blueprintable)
-class MYPROJECT_API UPNoise : public UObject
+class BIOTA_API UPNoise : public UObject
 {
 	GENERATED_BODY()
 	UPNoise();

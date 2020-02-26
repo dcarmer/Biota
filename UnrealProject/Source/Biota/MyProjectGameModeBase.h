@@ -10,7 +10,7 @@
  * 
  */
 UCLASS()
-class MYPROJECT_API AMyProjectGameModeBase : public AGameModeBase
+class BIOTA_API AMyProjectGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 	

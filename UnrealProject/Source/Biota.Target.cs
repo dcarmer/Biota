@@ -3,12 +3,12 @@
 using UnrealBuildTool;
 using System.Collections.Generic;
 
-public class MyProjectTarget : TargetRules
+public class BiotaTarget : TargetRules
 {
-	public MyProjectTarget(TargetInfo Target) : base(Target)
+	public BiotaTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
 
-		ExtraModuleNames.AddRange( new string[] { "MyProject" } );
+		ExtraModuleNames.AddRange( new string[] { "Biota" } );
 	}
 }

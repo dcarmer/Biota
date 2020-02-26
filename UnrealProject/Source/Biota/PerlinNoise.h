@@ -8,7 +8,7 @@
  * 
  */
 //UCLASS()
-class MYPROJECT_API PerlinNoise : public UObject
+class BIOTA_API PerlinNoise : public UObject
 {
 	//GENERATED_BODY()
 	//GENERATED_BODY()

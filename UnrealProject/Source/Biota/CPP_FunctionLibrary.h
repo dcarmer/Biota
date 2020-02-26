@@ -12,7 +12,7 @@
  * 
  */
 UCLASS()
-class MYPROJECT_API UCPP_FunctionLibrary : public UBlueprintFunctionLibrary
+class BIOTA_API UCPP_FunctionLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 

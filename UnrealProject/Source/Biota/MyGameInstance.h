@@ -10,7 +10,7 @@
  *
  */
 UCLASS()
-class MYPROJECT_API UMyGameInstance : public UGameInstance
+class BIOTA_API UMyGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
 
